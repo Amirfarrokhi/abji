@@ -68,8 +68,7 @@
             background-attachment: fixed;
             color: var(--text);
             font-family: "Vazirmatn", sans-serif;
-            transition: background-color 0.3s ease, color 0.3s ease;
-        }
+transition: background-color 0.35s ease, color 0.35s ease;        }
 
         button,
         a {
@@ -376,22 +375,12 @@
             font-size: 0.82rem;
             font-weight: 600;
         }
+.care-midwifery { background: var(--soft-peach); }
+.care-fertility { background: var(--soft-green); }
+.care-girl { background: var(--soft-pink); }
+.care-boy { background: var(--soft-blue); }
 
-        .care-midwifery {
-            background: linear-gradient(135deg, var(--soft-peach), var(--card));
-        }
 
-        .care-fertility {
-            background: linear-gradient(135deg, var(--soft-green), var(--card));
-        }
-
-        .care-girl {
-            background: linear-gradient(135deg, var(--soft-pink), var(--card));
-        }
-
-        .care-boy {
-            background: linear-gradient(135deg, var(--soft-blue), var(--card));
-        }
 
         /* پنجرهٔ خدمات و رزرو */
         #messenger-modal {
@@ -496,6 +485,7 @@
             font-weight: 700;
             text-decoration: none;
             transition: transform 0.2s ease, opacity 0.2s ease;
+            
         }
 
         .messenger-btn:hover {
@@ -524,6 +514,30 @@
         .close-modal:hover {
             color: var(--primary-dark);
         }
+        .glass-card,
+.about-section,
+.care-section,
+.modal-content,
+.theme-switch,
+.care-icon,
+.care-label,
+.price-list th {
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease;
+}
+
+.care-card {
+    transition:
+        background-color 0.35s ease,
+        color 0.35s ease,
+        border-color 0.35s ease,
+        box-shadow 0.35s ease,
+        transform 0.25s ease;
+}
+
 
         @media (max-width: 768px) {
             .hero {
