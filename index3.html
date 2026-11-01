@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="مشاوره مامایی و همراهی در دوران بارداری، زایمان و پس از زایمان.">
+  <title>[نام مشاور] | مشاوره مامایی</title>
+
+  <style>
+  :root {
+    --pink: #b96f94;
+    --pink-dark: #925575;
+    --pink-soft: #fceaf2;
+    --cream: #fff9fc;
+    --text: #493d46;
+    --muted: #80727c;
+    --white: #ffffff;
+    --border: #f3d8e5;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    color: var(--text);
+    background:
+      radial-gradient(circle at 8% 18%, #ffe1ec 0 3px, transparent 4px),
+      radial-gradient(circle at 92% 34%, #ffe1ec 0 4px, transparent 5px),
+      var(--cream);
+    font-family: Tahoma, Arial, sans-serif;
+    line-height: 1.9;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .container {
+    width: min(1080px, 90%);
+    margin: 0 auto;
+  }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(255, 249, 252, 0.96);
+    border-bottom: 2px dotted #f0cddd;
+    backdrop-filter: blur(10px);
+  }
+
+  nav {
+    min-height: 74px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+  }
+
+  .logo {
+    color: var(--pink-dark);
+    font-size: 1.1rem;
+    font-weight: bold;
+    white-space: nowrap;
+  }
+
+  .logo::before {
+    content: "🎀 ";
+  }
+
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 22px;
+    color: var(--muted);
+    font-size: 0.92rem;
+  }
+
+  .nav-links a {
+    transition: color 0.2s;
+  }
+
+  .nav-links a:hover {
+    color: var(--pink-dark);
+  }
+
+  .button {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 2px solid var(--white);
+    border-radius: 999px;
+    background: linear-gradient(135deg, #d98eae, #b96f94);
+    color: var(--white);
+    font-weight: bold;
+    box-shadow: 0 5px 0 #a95f83, 0 8px 18px #c77da333;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 7px 0 #a95f83, 0 10px 20px #c77da344;
+  }
+
+  .hero {
+    position: relative;
+    display: flex;
+    align-items: center;
+    min-height: 410px;
+    overflow: hidden;
+    padding: 70px 0;
+    background:
+      radial-gradient(circle at 12% 30%, #ffd6e7 0 9px, transparent 10px),
+      radial-gradient(circle at 85% 75%, #ffe6b8 0 12px, transparent 13px),
+      radial-gradient(circle at 78% 18%, #e6d9ff 0 7px, transparent 8px),
+      linear-gradient(135deg, #fff3f8, #fceafa 55%, #fff5e9);
+  }
+
+  .hero-content {
+    position: relative;
+    max-width: 720px;
+  }
+
+  .hero-content::after {
+    content: "🌷";
+    position: absolute;
+    left: 0;
+    bottom: -62px;
+    font-size: 3.5rem;
+    transform: rotate(-12deg);
+  }
+
+  .eyebrow {
+    display: inline-block;
+    padding: 5px 14px;
+    border: 1px dashed #e6a9c3;
+    border-radius: 999px;
+    background: #ffe1ed;
+    color: var(--pink-dark);
+    font-size: 0.9rem;
+    font-weight: bold;
+  }
+
+  h1 {
+    margin: 18px 0 14px;
+    color: var(--pink-dark);
+    font-size: clamp(2rem, 5vw, 3.25rem);
+    line-height: 1.5;
+    text-shadow: 2px 2px 0 #ffe2ee;
+  }
+
+  .hero p,
+  .section-intro {
+    max-width: 650px;
+    color: var(--muted);
+  }
+
+  .hero .button {
+    margin-top: 14px;
+  }
+
+  section {
+    padding: 66px 0;
+  }
+
+  h2 {
+    margin: 0 0 10px;
+    color: var(--pink-dark);
+    font-size: 1.8rem;
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    margin-top: 28px;
+  }
+
+  .card {
+    position: relative;
+    overflow: hidden;
+    padding: 23px;
+    border: 2px solid #f8dfeb;
+    border-radius: 26px;
+    background: linear-gradient(145deg, #ffffff, #fff8fb);
+    box-shadow: 0 8px 0 #f8e6ee;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 0 #f4dce7;
+  }
+
+  .card::after {
+    content: "♡";
+    position: absolute;
+    top: 5px;
+    left: 14px;
+    color: #f1c1d5;
+    font-size: 1.8rem;
+  }
+
+  .card h3 {
+    margin: 0 0 8px;
+    color: var(--text);
+    font-size: 1.1rem;
+  }
+
+  .card h3::before {
+    content: "🌸 ";
+  }
+
+  .card p {
+    margin: 0;
+    color: var(--muted);
+  }
+
+  .about {
+    background:
+      radial-gradient(circle at 90% 15%, #ffffff 0 7px, transparent 8px),
+      var(--pink-soft);
+    border-top: 2px dotted #efc9d9;
+    border-bottom: 2px dotted #efc9d9;
+  }
+
+  .about-box {
+    max-width: 760px;
+  }
+
+  .articles .card a {
+    display: inline-block;
+    margin-top: 14px;
+    color: var(--pink-dark);
+    font-weight: bold;
+  }
+
+  .contact {
+    color: var(--white);
+    text-align: center;
+    background:
+      radial-gradient(circle at 10% 25%, #eab4cc 0 7px, transparent 8px),
+      linear-gradient(135deg, #b97898, #d392af);
+  }
+
+  .contact h2,
+  .contact p {
+    color: var(--white);
+  }
+
+  .contact h2::before {
+    content: "💌 ";
+  }
+
+  .contact-buttons {
+    margin: 20px 0;
+  }
+
+  .contact .button {
+    margin: 5px;
+    background: var(--white);
+    color: var(--pink-dark);
+    box-shadow: 0 5px 0 #925575, 0 8px 18px #71435a33;
+  }
+
+  .contact .button:hover {
+    background: #fff0f6;
+  }
+
+  footer {
+    padding: 22px 0;
+    border-top: 2px dotted #f0cddd;
+    background: #fff7fb;
+    color: var(--muted);
+    text-align: center;
+    font-size: 0.88rem;
+  }
+
+  @media (max-width: 720px) {
+    nav {
+      flex-wrap: wrap;
+      padding: 12px 0;
+    }
+
+    .nav-links {
+      order: 3;
+      width: 100%;
+      justify-content: center;
+      gap: 16px;
+      padding-bottom: 5px;
+      font-size: 0.85rem;
+    }
+
+    .nav-button {
+      padding: 8px 14px;
+      font-size: 0.88rem;
+    }
+
+    .hero {
+      min-height: 360px;
+      padding: 58px 0;
+    }
+
+    .hero-content::after {
+      left: 5px;
+      bottom: -52px;
+      font-size: 2.8rem;
+    }
+
+    section {
+      padding: 50px 0;
+    }
+
+    .cards {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .nav-links {
+      gap: 10px;
+      font-size: 0.78rem;
+    }
+
+    .logo {
+      font-size: 1rem;
+    }
+  }
+</style>
+
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">[نام مشاور]</a>
+
+      <div class="nav-links">
+        <a href="#services">خدمات</a>
+        <a href="#about">درباره من</a>
+        <a href="#articles">مقاله‌ها</a>
+        <a href="#contact">ارتباط</a>
+      </div>
+
+      <a class="button nav-button" href="#contact">دریافت مشاوره</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="container hero-content">
+        <span class="eyebrow">مشاوره مامایی و همراهی آگاهانه ♡</span>
+        <h1>با خیال راحت، قدم‌به‌قدم کنار شما هستم</h1>
+        <p>
+          [چند جمله‌ی کوتاه درباره‌ی مشاور و شیوه‌ی همراهی او بنویسید.
+          مثلاً توضیح دهید چه نوع مشاوره‌ای ارائه می‌شود و چطور می‌توان وقت گرفت.]
+        </p>
+        <a class="button" href="#contact">رزرو وقت مشاوره</a>
+      </div>
+    </section>
+
+    <section id="services">
+      <div class="container">
+        <h2>خدمات مشاوره</h2>
+        <p class="section-intro">
+          خدمات و زمینه‌های مشاوره را به زبان ساده و روشن معرفی کنید.
+        </p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>مشاوره دوران بارداری</h3>
+            <p>
+              همراهی و راهنمایی درباره‌ی پرسش‌ها و موضوعات مرتبط با دوران بارداری.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>آمادگی برای زایمان</h3>
+            <p>
+              آشنایی با روند زایمان و آمادگی برای این مرحله، متناسب با نیاز مراجعه‌کننده.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>مراقبت پس از زایمان</h3>
+            <p>
+              مشاوره و همراهی در زمینه‌ی مراقبت‌های پس از زایمان و روزهای نخست مادری.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="about" id="about">
+      <div class="container about-box">
+        <h2>درباره من</h2>
+        <p>
+          من [نام و نام خانوادگی]، [عنوان یا تخصص دقیق] هستم.
+          [اینجا درباره‌ی تحصیلات، تجربه‌ی کاری، شهر محل فعالیت و شیوه‌ی مشاوره
+          چند جمله بنویسید.]
+        </p>
+      </div>
+    </section>
+
+<section class="articles" id="articles">
+  <div class="container">
+    <h2>مقاله‌های آموزشی</h2>
+    <p class="section-intro">نوشته‌هایی درباره‌ی بارداری، زایمان و مراقبت‌های پس از آن.</p>
+
+    <div class="cards">
+      <article class="card">
+        <h3><a href="article-1.html">مراقبت‌های مهم در سه‌ماهه اول بارداری</a></h3>
+      </article>
+
+      <article class="card">
+        <h3><a href="article-2.html">چه زمانی برای آزمایش بارداری مناسب است؟</a></h3>
+      </article>
+
+      <article class="card">
+        <h3><a href="article-3.html">آمادگی برای زایمان؛ از کجا شروع کنیم؟</a></h3>
+      </article>
+
+      <article class="card">
+        <h3><a href="article-4.html">وسایل ضروری برای بیمارستان و زایمان</a></h3>
+      </article>
+
+      <article class="card">
+        <h3><a href="article-5.html">مراقبت‌های روزهای اول پس از زایمان</a></h3>
+      </article>
+
+      <article class="card">
+        <h3><a href="article-6.html">پرسش‌های رایج درباره‌ی شیردهی</a></h3>
+      </article>
+
+      <article class="card">
+        <h3><a href="article-7.html">تغذیه در دوران بارداری؛ نکات کلی</a></h3>
+      </article>
+
+      <article class="card">
+        <h3><a href="article-8.html">همراهی عاطفی در دوران بارداری</a></h3>
+      </article>
+
+      <article class="card">
+        <h3><a href="article-9.html">چطور برای ویزیت مامایی آماده شویم؟</a></h3>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+    <section class="contact" id="contact">
+      <div class="container">
+        <h2>برای هماهنگی وقت پیام بدهید ♡</h2>
+        <p>از راه‌های زیر با من در ارتباط باشید.</p>
+
+        <div class="contact-buttons">
+          <a class="button" href="tel:+989120000000">تماس تلفنی</a>
+          <a class="button" href="https://wa.me/989120000000">پیام در واتساپ</a>
+        </div>
+
+        <p>اینستاگرام: [آدرس صفحه] · شهر: [نام شهر]</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © [سال] [نام مشاور] — همه حقوق محفوظ است.
+      <br>
+      محتوای این سایت جایگزین مشاوره‌ی تخصصی و ارزیابی فردی نیست.
+    </div>
+  </footer>
+</body>
+</html>
