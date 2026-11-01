@@ -62,9 +62,7 @@
             align-items: center;
         }
 
-        .profile-section {
-            text-align: center;
-        }
+        .profile-section { text-align: center; }
 
         .main-img {
             width: 280px;
@@ -116,26 +114,30 @@
             background: var(--primary-dark);
         }
 
-        /* Messaging Modal */
+        /* Large Modal */
         #messenger-modal {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            background: rgba(0,0,0,0.5);
-            backdrop-filter: blur(8px);
+            background: rgba(0,0,0,0.6);
+            backdrop-filter: blur(10px);
             display: none;
             justify-content: center;
             align-items: center;
             z-index: 1000;
+            padding: 1rem;
         }
 
         .modal-content {
             background: white;
-            width: 90%;
-            max-width: 400px;
-            padding: 2rem;
-            border-radius: 30px;
+            width: 100%;
+            max-width: 650px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 2.5rem;
+            border-radius: 40px;
             text-align: center;
             animation: slideUp 0.4s ease-out;
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
         }
 
         @keyframes slideUp {
@@ -146,54 +148,84 @@
         .modal-content h2 {
             color: var(--primary-dark);
             margin-bottom: 1.5rem;
-            font-size: 1.5rem;
+            font-size: 1.8rem;
         }
 
+        /* Pricing Table */
+        .price-list {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 2.5rem;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1px #eee;
+        }
+
+        .price-list th {
+            background-color: var(--primary-soft);
+            color: var(--primary-dark);
+            padding: 1rem;
+            text-align: right;
+        }
+
+        .price-list td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            text-align: right;
+        }
+
+        .price-tag {
+            font-weight: 800;
+            color: var(--primary-main);
+            text-align: left !important;
+        }
+
+        /* Messenger Buttons */
         .messenger-options {
-            display: flex;
-            flex-direction: column;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
             gap: 1rem;
+            margin-bottom: 1rem;
         }
 
         .messenger-btn {
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 10px;
             padding: 1rem;
             border-radius: 15px;
             text-decoration: none;
             color: white;
             font-weight: bold;
             transition: 0.3s;
-            font-size: 1.1rem;
+            font-size: 1rem;
         }
 
         .whatsapp { background-color: #25D366; }
         .telegram { background-color: #0088cc; }
-        .instagram { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
+        .instagram { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); }
+        .bale { background-color: #00a2e8; }
+        .eitaa { background-color: #f5f5f5; color: #333; border: 1px solid #ddd; }
 
         .messenger-btn:hover {
-            transform: scale(1.02);
+            transform: translateY(-3px);
             filter: brightness(1.1);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
 
         .close-modal {
-            margin-top: 1.5rem;
             display: block;
-            color: #888;
+            margin-top: 2rem;
+            color: #aaa;
             text-decoration: none;
             font-size: 0.9rem;
             cursor: pointer;
         }
 
         @media (max-width: 768px) {
-            .glass-card {
-                grid-template-columns: 1fr;
-                text-align: center;
-                padding: 2rem;
-            }
+            .glass-card { grid-template-columns: 1fr; text-align: center; padding: 2rem; }
             .info-section { text-align: center; }
+            .messenger-options { grid-template-columns: 1fr 1fr; }
         }
     </style>
 </head>
@@ -210,27 +242,53 @@
             <div class="info-section">
                 <h1>همسفر شما در <br> <span style="color: var(--primary-main);">زیباترین سفر زندگی</span></h1>
                 <p>من دکتر [نام] هستم. باور دارم که هر زایمان باید یک تجربه آگاهانه، آرام و سرشار از عشق باشد. اینجا فضایی است برای شنیدن دغدغه‌های شما و مراقبت تخصصی از شما و فرزندتان.</p>
-                <div class="booking-trigger" onclick="openModal()">درخواست وقت مشاوره ✨</div>
+                <div class="booking-trigger" onclick="openModal()">مشاهده خدمات و رزرو وقت ✨</div>
             </div>
         </div>
     </section>
 
     <div id="messenger-modal">
         <div class="modal-content">
-            <h2>از چه طریقی پیام بدید؟</h2>
+            <h2>خدمات و ارتباط با پزشک</h2>
+            
+            <table class="price-list">
+                <thead>
+                    <tr>
+                        <th>نوع خدمت</th>
+                        <th style="text-align: left;">هزینه</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>مشاوره پیش از بارداری</td>
+                        <td class="price-tag">۳۰۰,۰۰۰ تومان</td>
+                    </tr>
+                    <tr>
+                        <td>ویزیت ماهانه بارداری</td>
+                        <td class="price-tag">۴۰۰,۰۰۰ تومان</td>
+                    </tr>
+                    <tr>
+                        <td>آموزش زایمان (پکیج)</td>
+                        <td class="price-tag">۱,۲۰۰,۰۰۰ تومان</td>
+                    </tr>
+                    <tr>
+                        <td>مشاوره شیردهی و تغذیه</td>
+                        <td class="price-tag">۲۵۰,۰۰۰ تومان</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p style="margin-bottom: 1rem; font-weight: 500;">برای ثبت نوبت، از پیام‌رسان مورد نظر خود استفاده کنید:</p>
+            
             <div class="messenger-options">
-                <!-- لینک‌ها را با شماره یا آیدی واقعی جایگزین کنید -->
-                <a href="https://wa.me/989120000000" target="_blank" class="messenger-btn whatsapp">
-                    <span>واتس‌اپ</span>
-                </a>
-                <a href="https://t.me/username" target="_blank" class="messenger-btn telegram">
-                    <span>تلگرام</span>
-                </a>
-                <a href="https://instagram.com/username" target="_blank" class="messenger-btn instagram">
-                    <span>اینستاگرام</span>
-                </a>
+                <a href="https://wa.me/989120000000" target="_blank" class="messenger-btn whatsapp">واتس‌اپ</a>
+                <a href="https://t.me/username" target="_blank" class="messenger-btn telegram">تلگرام</a>
+                <a href="https://instagram.com/username" target="_blank" class="messenger-btn instagram">اینستاگرام</a>
+                <a href="https://bale.ai/username" target="_blank" class="messenger-btn bale">بله</a>
+                <a href="https://eitaa.com/username" target="_blank" class="messenger-btn eitaa">ایتا</a>
             </div>
-            <span class="close-modal" onclick="closeModal()">انصراف</span>
+
+            <span class="close-modal" onclick="closeModal()">بستن پنجره</span>
         </div>
     </div>
 
