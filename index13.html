@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Care | Luxury Midwifery</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --glass-bg: rgba(255, 255, 255, 0.25);
+            --glass-border: rgba(255, 255, 255, 0.4);
+            --text-color: #1d1d1f;
+            --accent-color: #0071e3;
+            --accent-dark: #005bbd;
+        }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #eef2f3;
+            color: var(--text-color);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- پس‌زمینه متحرک --- */
+        .bg-blobs {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1; filter: blur(80px); opacity: 0.6;
+        }
+
+        .blob { position: absolute; border-radius: 50%; animation: move 20s infinite alternate; }
+        .blob1 { width: 500px; height: 500px; background: #ffb7ff; top: -10%; left: -10%; }
+        .blob2 { width: 600px; height: 600px; background: #b2efff; bottom: -10%; right: -10%; animation-delay: -5s; }
+        .blob3 { width: 400px; height: 400px; background: #ffdfba; top: 40%; left: 30%; animation-delay: -10s; }
+
+        @keyframes move {
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(100px, 100px) rotate(360deg); }
+        }
+
+        /* --- استایل شیشه‌ای (Glassmorphism) --- */
+        .glass {
+            background: var(--glass-bg);
+            backdrop-filter: blur(25px) saturate(180%);
+            -webkit-backdrop-filter: blur(25px) saturate(180%);
+            border: 1px solid var(--glass-border);
+            border-radius: 30px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+        }
+
+        nav {
+            position: fixed; top: 20px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 700px;
+            display: flex; justify-content: space-around;
+            padding: 15px 0; z-index: 1000;
+        }
+
+        nav a { text-decoration: none; color: var(--text-color); font-weight: 500; opacity: 0.7; transition: 0.3s; }
+        nav a:hover { opacity: 1; }
+
+        .container {
+            padding: 120px 5% 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 80px;
+        }
+
+        .hero { text-align: center; max-width: 800px; }
+        .hero h1 { font-size: 3.5rem; font-weight: 800; margin-bottom: 20px; letter-spacing: -2px; }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            width: 100%;
+            max-width: 1100px;
+        }
+
+        .service-card {
+            padding: 30px;
+            text-align: center;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .service-card:hover { transform: scale(1.05); background: rgba(255, 255, 255, 0.4); }
+        .service-card i { font-size: 2.5rem; color: var(--accent-color); margin-bottom: 20px; display: block; }
+
+        /* --- بخش هزینه‌ها --- */
+        .pricing-section {
+            width: 100%;
+            max-width: 1100px;
+            text-align: center;
+        }
+
+        .pricing-section h2 { font-size: 2.5rem; margin-bottom: 40px; }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .price-card {
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: 0.4s;
+            position: relative;
+        }
+
+        .price-card:hover { transform: translateY(-15px); background: rgba(255, 255, 255, 0.5); }
+
+        .price-card h3 { font-size: 1.8rem; margin-bottom: 10px; }
+        .price-card .amount { font-size: 2.5rem; font-weight: 900; margin-bottom: 20px; color: var(--accent-color); }
+        .price-card ul { list-style: none; padding: 0; margin-bottom: 30px; text-align: right; width: 100%; }
+        .price-card ul li { margin-bottom: 12px; opacity: 0.8; display: flex; align-items: center; gap: 10px; }
+        .price-card ul li i { color: #2ecc71; font-size: 0.9rem; }
+
+        .price-card.featured {
+            border: 2px solid var(--accent-color);
+            transform: scale(1.05);
+        }
+        .featured-tag {
+            position: absolute; top: -15px; background: var(--accent-color);
+            color: white; padding: 5px 15px; border-radius: 20px; font-size: 0.8rem;
+        }
+
+        /* استایل متن اطلاع‌رسانی جایگزین دکمه */
+        .info-text {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            font-style: italic;
+            margin-top: auto;
+        }
+
+        /* --- بخش پیام‌رسان‌ها --- */
+        .contact-hub {
+            width: 100%;
+            max-width: 800px;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .contact-hub h2 { font-size: 2rem; margin-bottom: 10px; }
+        .contact-hub p { margin-bottom: 40px; opacity: 0.7; }
+
+        .messenger-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 20px;
+        }
+
+        .messenger-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            text-decoration: none;
+            color: var(--text-color);
+            font-weight: bold;
+            transition: 0.3s;
+            gap: 10px;
+        }
+
+        .messenger-btn img {
+            width: 32px;
+            height: 32px;
+            object-fit: contain;
+            transition: 0.3s;
+        }
+
+        .messenger-btn:hover { 
+            transform: translateY(-5px); 
+            background: rgba(255, 255, 255, 0.5); 
+        }
+
+        .messenger-btn:hover img {
+            transform: scale(1.1);
+            filter: brightness(1.2);
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.2rem; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .price-card.featured { transform: scale(1); }
+            .messenger-grid { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-blobs">
+        <div class="blob blob1"></div>
+        <div class="blob blob2"></div>
+        <div class="blob blob3"></div>
+    </div>
+
+    <nav class="glass">
+        <a href="#home">خانه</a>
+        <a href="#services">خدمات</a>
+        <a href="#pricing">هزینه‌ها</a>
+        <a href="#contact">ارتباط</a>
+    </nav>
+
+    <div class="container">
+        <section class="hero" id="home">
+            <h1>مراقبت‌های <br> مامایی نوین</h1>
+            <p>ترکیبی از آرامش، علم و تکنولوژی برای همراهی شما در زیباترین لحظات زندگی.</p>
+        </section>
+
+        <section class="services-grid" id="services">
+            <div class="service-card glass">
+                <i class="fa-solid fa-baby"></i>
+                <h3>دوران بارداری</h3>
+                <p>مشاوره جامع برای سلامت مادر و جنین.</p>
+            </div>
+            <div class="service-card glass">
+                <i class="fa-solid fa-wind"></i>
+                <h3>زایمان آرام</h3>
+                <p>تکنیک‌های مدرن کاهش درد و استرس.</p>
+            </div>
+            <div class="service-card glass">
+                <i class="fa-solid fa-heart"></i>
+                <h3>پس از تولد</h3>
+                <p>پشتیبانی تخصصی در دوران نفاس و شیردهی.</p>
+            </div>
+        </section>
+
+        <!-- بخش هزینه‌ها -->
+        <section class="pricing-section" id="pricing">
+            <h2>طرح‌های مشاوره</h2>
+            <div class="pricing-grid">
+                <!-- پکیج ۱ -->
+                <div class="price-card glass">
+                    <h3>مشاوره سریع</h3>
+                    <div class="amount">۲۰۰ <span style="font-size: 1rem;">هزار تومان</span></div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> جلسه ۲۰ دقیقه‌ای آنلاین</li>
+                        <li><i class="fa-solid fa-check"></i> پاسخ به یک سوال کلیدی</li>
+                        <li><i class="fa-solid fa-xmark" style="color: #ff7675;"></i> پشتیبانی بین جلسات</li>
+                    </ul>
+                    <p class="info-text">جهت رزرو به بخش ارتباطات مراجعه کنید</p>
+                </div>
+                <!-- پکیج ۲ (ویژه) -->
+                <div class="price-card glass featured">
+                    <div class="featured-tag">محبوب‌ترین</div>
+                    <h3>پکیج جامع</h3>
+                    <div class="amount">۵۰۰ <span style="font-size: 1rem;">هزار تومان</span></div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> جلسه ۶۰ دقیقه‌ای جامع</li>
+                        <li><i class="fa-solid fa-check"></i> برنامه تغذیه اختصاصی</li>
+                        <li><i class="fa-solid fa-check"></i> پشتیبانی یک هفته‌ای</li>
+                    </ul>
+                    <p class="info-text">جهت رزرو به بخش ارتباطات مراجعه کنید</p>
+                </div>
+                <!-- پکیج ۳ -->
+                <div class="price-card glass">
+                    <h3>مراقبت VIP</h3>
+                    <div class="amount">۱.۲ <span style="font-size: 1rem;">میلیون تومان</span></div>
+                    <ul>
+                        <li><i class="fa-solid fa-check"></i> همراهی کامل تا لحظه زایمان</li>
+                        <li><i class="fa-solid fa-check"></i> تماس ۲۴ ساعته در مواقع اضطراری</li>
+                        <li><i class="fa-solid fa-check"></i> جلسات آموزش زایمان بدون درد</li>
+                    </ul>
+                    <p class="info-text">جهت رزرو به بخش ارتباطات مراجعه کنید</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- بخش ارتباطات -->
+        <section class="contact-hub glass" id="contact">
+            <h2>رزرو وقت مشاوره</h2>
+            <p>برای انتخاب طرح و رزرو سریع، از طریق پیام‌رسان‌ها با ما در ارتباط باشید:</p>
+            
+            <div class="messenger-grid">
+                <a href="https://wa.me/989120000000" class="messenger-btn glass whatsapp" target="_blank">
+                    <img src="./assets/whatsapp.svg" alt="WhatsApp">
+                    <span>واتس‌اپ</span>
+                </a>
+                <a href="https://t.me/username" class="messenger-btn glass telegram" target="_blank">
+                    <img src="./assets/telegram.svg" alt="Telegram">
+                    <span>تلگرام</span>
+                </a>
+                <a href="https://bale.ai/username" class="messenger-btn glass bale" target="_blank">
+                    <img src="./assets/bale.svg" alt="Bale">
+                    <span>بله</span>
+                </a>
+                <a href="https://eitaa.com/username" class="messenger-btn glass eita" target="_blank">
+                    <img src="./assets/eitaa.svg" alt="Eita">
+                    <span>ایتا</span>
+                </a>
+                <a href="https://instagram.com/username" class="messenger-btn glass instagram" target="_blank">
+                    <img src="./assets/instagram.svg" alt="Instagram">
+                    <span>اینستاگرام</span>
+                </a>
+            </div>
+        </section>
+    
+    </div>
+
+</body>
+</html>

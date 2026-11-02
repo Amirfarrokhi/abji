@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#f3f0e8" />
+  <title>نزدیک | مشاوره مامایی با نازنین مهر</title>
+
+  <style>
+    :root {
+      --paper: #f3f0e8;
+      --ink: #20253c;
+      --blue: #c9d9f4;
+      --pink: #f3cfc7;
+      --lime: #dce9a9;
+      --lilac: #d9ceef;
+      --line: rgba(32, 37, 60, 0.2);
+      --muted: #62667a;
+      --display: "Arial", "Tahoma", sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Tahoma, Arial, sans-serif;
+      line-height: 1.8;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .wrap {
+      width: min(1280px, calc(100% - 64px));
+      margin-inline: auto;
+    }
+
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      min-height: 76px;
+      border-bottom: 1px solid var(--line);
+      font-size: 0.82rem;
+    }
+
+    .wordmark {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.05rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+    }
+
+    .wordmark-icon {
+      display: grid;
+      width: 30px;
+      height: 30px;
+      place-items: center;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      font-size: 1.15rem;
+      line-height: 1;
+    }
+
+    .topnav {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      color: var(--muted);
+    }
+
+    .topnav a:hover {
+      color: var(--ink);
+    }
+
+    .top-contact {
+      padding: 9px 15px;
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 5vw;
+      align-items: center;
+      min-height: 680px;
+      padding-block: 74px 88px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .kicker,
+    .section-index {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+    }
+
+    .kicker::before {
+      width: 30px;
+      height: 1px;
+      background: var(--ink);
+      content: "";
+    }
+
+    h1 {
+      max-width: 700px;
+      margin: 24px 0 20px;
+      font-size: clamp(4rem, 9.4vw, 9.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.09em;
+    }
+
+    h1 span {
+      display: block;
+      color: transparent;
+      -webkit-text-stroke: 1.5px var(--ink);
+    }
+
+    .hero-description {
+      max-width: 410px;
+      margin: 0;
+      color: var(--muted);
+      font-size: 1rem;
+    }
+
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 13px;
+      margin-top: 30px;
+      padding: 13px 19px;
+      border-radius: 4px;
+      background: var(--ink);
+      color: white;
+      font-weight: 700;
+      transition: transform 180ms ease;
+    }
+
+    .hero-cta:hover {
+      transform: translateY(-3px);
+    }
+
+    .hero-cta span {
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    .hero-note {
+      position: absolute;
+      right: 0;
+      bottom: -56px;
+      color: var(--muted);
+      font-size: 0.72rem;
+    }
+
+    .visual {
+      position: relative;
+      display: grid;
+      min-height: 490px;
+      place-items: center;
+    }
+
+    .visual-backdrop {
+      position: absolute;
+      width: min(38vw, 450px);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background: var(--blue);
+    }
+
+    .visual-cutout {
+      position: absolute;
+      top: 10%;
+      right: 7%;
+      width: 58%;
+      height: 72%;
+      border: 1px solid var(--ink);
+      border-radius: 48% 48% 4px 4px;
+      background: var(--pink);
+      transform: rotate(8deg);
+    }
+
+    .visual-cutout::before {
+      position: absolute;
+      top: 13%;
+      right: 17%;
+      width: 68%;
+      height: 62%;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .visual-cutout::after {
+      position: absolute;
+      right: 48%;
+      bottom: -11%;
+      width: 1px;
+      height: 95%;
+      background: var(--ink);
+      content: "";
+      transform: rotate(-8deg);
+    }
+
+    .visual-orbit {
+      position: absolute;
+      width: 92%;
+      height: 55%;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      transform: rotate(-31deg);
+    }
+
+    .visual-orbit::before {
+      position: absolute;
+      top: 4%;
+      left: 15%;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--lime);
+      content: "";
+    }
+
+    .visual-label {
+      position: absolute;
+      z-index: 2;
+      right: 2%;
+      bottom: 8%;
+      max-width: 170px;
+      padding: 12px 15px;
+      background: var(--lime);
+      font-size: 0.82rem;
+      font-weight: 700;
+      transform: rotate(-4deg);
+    }
+
+    .visual-number {
+      position: absolute;
+      top: 4%;
+      left: 2%;
+      font-size: 0.76rem;
+      color: var(--muted);
+    }
+
+    .marquee {
+      overflow: hidden;
+      border-bottom: 1px solid var(--line);
+      background: var(--lime);
+    }
+
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      gap: 30px;
+      padding: 13px 0;
+      animation: ticker 28s linear infinite;
+    }
+
+    .marquee-track span {
+      font-size: 0.82rem;
+      font-weight: 700;
+    }
+
+    .marquee-track b {
+      color: #777e53;
+      font-size: 1.2rem;
+      line-height: 1;
+    }
+
+    @keyframes ticker {
+      to {
+        transform: translateX(-30%);
+      }
+    }
+
+    .intro {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 8vw;
+      padding-block: 110px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-index {
+      align-self: start;
+    }
+
+    .section-index strong {
+      color: var(--ink);
+      font-size: 0.9rem;
+    }
+
+    .intro-main h2 {
+      max-width: 790px;
+      margin: 0;
+      font-size: clamp(2rem, 4.8vw, 4.8rem);
+      line-height: 1.32;
+      letter-spacing: -0.075em;
+    }
+
+    .intro-main h2 em {
+      color: #67718f;
+      font-style: normal;
+    }
+
+    .intro-main p {
+      max-width: 500px;
+      margin: 28px 0 0;
+      color: var(--muted);
+    }
+
+    .topics {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 8vw;
+      padding-block: 100px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topic-list {
+      border-top: 1px solid var(--ink);
+    }
+
+    .topic {
+      display: grid;
+      grid-template-columns: 58px 1fr 30px;
+      align-items: center;
+      gap: 18px;
+      padding: 21px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topic-num {
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    .topic h3 {
+      margin: 0;
+      font-size: clamp(1.1rem, 2vw, 1.55rem);
+      letter-spacing: -0.04em;
+    }
+
+    .topic-arrow {
+      font-size: 1.2rem;
+      transition: transform 180ms ease;
+    }
+
+    .topic:hover .topic-arrow {
+      transform: translateX(-5px);
+    }
+
+    .topic-footnote {
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 0.78rem;
+    }
+
+    .profile {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      gap: 7vw;
+      padding-block: 100px;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .profile-art {
+      position: relative;
+      display: flex;
+      min-height: 390px;
+      align-items: end;
+      overflow: hidden;
+      padding: 26px;
+      background: var(--lilac);
+    }
+
+    .profile-art::before {
+      position: absolute;
+      top: -15%;
+      right: 20%;
+      width: 58%;
+      aspect-ratio: 1;
+      border: 1px solid var(--ink);
+      border-radius: 50%;
+      content: "";
+    }
+
+    .profile-art::after {
+      position: absolute;
+      right: 41%;
+      bottom: -37%;
+      width: 40%;
+      height: 95%;
+      border: 1px solid var(--ink);
+      border-radius: 50% 50% 0 0;
+      background: var(--pink);
+      content: "";
+    }
+
+    .profile-stamp {
+      position: relative;
+      z-index: 1;
+      padding: 9px 12px;
+      background: var(--paper);
+      font-size: 0.75rem;
+      font-weight: 700;
+      transform: rotate(-3deg);
+    }
+
+    .profile-copy {
+      align-self: center;
+    }
+
+    .profile-copy h2 {
+      margin: 18px 0;
+      font-size: clamp(2.3rem, 5vw, 5rem);
+      line-height: 1.15;
+      letter-spacing: -0.08em;
+    }
+
+    .profile-copy p {
+      max-width: 470px;
+      color: var(--muted);
+    }
+
+    .profile-meta {
+      display: flex;
+      gap: 26px;
+      margin-top: 25px;
+      padding-top: 18px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    .booking {
+      display: grid;
+      grid-template-columns: 0.7fr 1.3fr;
+      gap: 8vw;
+      padding-block: 100px;
+    }
+
+    .booking-main {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      padding: 30px;
+      background: var(--blue);
+    }
+
+    .booking-main h2 {
+      max-width: 530px;
+      margin: 0;
+      font-size: clamp(2.4rem, 5.8vw, 6rem);
+      line-height: 1.12;
+      letter-spacing: -0.08em;
+    }
+
+    .booking-actions {
+      display: flex;
+      flex-direction: column;
+      flex: 0 0 auto;
+      gap: 10px;
+    }
+
+    .messenger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      min-width: 190px;
+      padding: 13px 16px;
+      border: 1px solid var(--ink);
+      background: var(--paper);
+      font-size: 0.85rem;
+      font-weight: 700;
+      transition: background 180ms ease, color 180ms ease;
+    }
+
+    .messenger:hover {
+      color: white;
+      background: var(--ink);
+    }
+
+    .booking-note {
+      margin: 16px 0 0;
+      color: var(--muted);
+      font-size: 0.76rem;
+    }
+
+    footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding-block: 22px 30px;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 0.75rem;
+    }
+
+    footer p {
+      margin: 0;
+    }
+
+    @media (max-width: 760px) {
+      .wrap {
+        width: min(100% - 36px, 600px);
+      }
+
+      .topbar {
+        min-height: 66px;
+      }
+
+      .topnav {
+        gap: 14px;
+      }
+
+      .topnav a:not(.top-contact) {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 18px;
+        min-height: auto;
+        padding-block: 65px 55px;
+      }
+
+      h1 {
+        font-size: clamp(4.1rem, 18vw, 7rem);
+      }
+
+      .hero-note {
+        position: static;
+        margin-top: 20px;
+      }
+
+      .visual {
+        min-height: 360px;
+      }
+
+      .visual-backdrop {
+        width: min(78vw, 370px);
+      }
+
+      .visual-cutout {
+        width: 53%;
+        height: 72%;
+      }
+
+      .intro,
+      .topics,
+      .booking {
+        grid-template-columns: 1fr;
+        gap: 32px;
+        padding-block: 65px;
+      }
+
+      .intro-main h2 {
+        font-size: clamp(2.3rem, 10vw, 4rem);
+      }
+
+      .profile {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding-block: 65px;
+      }
+
+      .profile-art {
+        min-height: 310px;
+      }
+
+      .profile-copy h2 {
+        font-size: 3.3rem;
+      }
+
+      .booking-main {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 24px;
+      }
+
+      .booking-main h2 {
+        font-size: clamp(2.8rem, 12vw, 5rem);
+      }
+
+      .booking-actions {
+        flex-direction: row;
+      }
+
+      .messenger {
+        min-width: 0;
+        flex: 1;
+      }
+    }
+
+    @media (max-width: 420px) {
+      .booking-actions {
+        flex-direction: column;
+      }
+
+      .topic {
+        grid-template-columns: 38px 1fr 22px;
+        gap: 10px;
+      }
+
+      .profile-meta {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="wrap topbar">
+    <a class="wordmark" href="#top" aria-label="نزدیک، صفحه اصلی">
+      <span class="wordmark-icon" aria-hidden="true">ن</span>
+      <span>نزدیک</span>
+    </a>
+
+    <nav class="topnav" aria-label="منوی اصلی">
+      <a href="#approach">رویکرد</a>
+      <a href="#topics">موضوعات</a>
+      <a href="#midwife">مشاور</a>
+      <a class="top-contact" href="#booking">رزرو مشاوره ↙</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="wrap hero">
+      <div class="hero-copy">
+        <div class="kicker">مشاوره مامایی · نازنین مهر</div>
+        <h1>بدنِ تو،<span>صدای تو.</span></h1>
+        <p class="hero-description">
+          جایی برای گفت‌وگوی روشن و بی‌قضاوت درباره پرسش‌هایی که
+          دوست داری با آرامش پیگیری‌شان کنی.
+        </p>
+        <a class="hero-cta" href="#booking">
+          برای گفت‌وگو پیام بده
+          <span aria-hidden="true">↙</span>
+        </a>
+        <div class="hero-note">یک گفت‌وگوی ساده می‌تواند شروع خوبی باشد. — ۰۱</div>
+      </div>
+
+      <div class="visual" aria-label="تصویرسازی انتزاعی">
+        <span class="visual-number">STUDIO / 01</span>
+        <div class="visual-backdrop"></div>
+        <div class="visual-orbit"></div>
+        <div class="visual-cutout"></div>
+        <div class="visual-label">با آگاهی جلو برو؛<br />با عجله نه.</div>
+      </div>
+    </section>
+
+    <div class="marquee" aria-label="همراهی آگاهانه">
+      <div class="marquee-track">
+        <span>پرسیدن حق توست</span><b>✳</b>
+        <span>گفت‌وگوی محترمانه</span><b>✳</b>
+        <span>آگاهی، قدم‌به‌قدم</span><b>✳</b>
+        <span>پرسیدن حق توست</span><b>✳</b>
+        <span>گفت‌وگوی محترمانه</span><b>✳</b>
+        <span>آگاهی، قدم‌به‌قدم</span><b>✳</b>
+        <span>پرسیدن حق توست</span><b>✳</b>
+        <span>گفت‌وگوی محترمانه</span><b>✳</b>
+        <span>آگاهی، قدم‌به‌قدم</span><b>✳</b>
+      </div>
+    </div>
+
+    <section class="wrap intro" id="approach">
+      <div class="section-index"><strong>۰۱</strong> / رویکرد</div>
+      <div class="intro-main">
+        <h2>
+          قرار نیست همه‌چیز را از قبل بدانی.
+          <em>قرار است بتوانی بپرسی.</em>
+        </h2>
+        <p>
+          مشاوره فرصتی برای گفت‌وگو و دریافت اطلاعات متناسب با شرایط توست.
+          این صفحه معرفی اولیه‌ی خدمات ماما نازنین مهر است؛
+          جزئیات را پیش از انتشار با مشاور هماهنگ کن.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap topics" id="topics">
+      <div class="section-index"><strong>۰۲</strong> / موضوعات گفت‌وگو</div>
+      <div>
+        <div class="topic-list">
+          <article class="topic">
+            <span class="topic-num">۰۱</span>
+            <h3>سلامت زنان</h3>
+            <span class="topic-arrow" aria-hidden="true">↙</span>
+          </article>
+          <article class="topic">
+            <span class="topic-num">۰۲</span>
+            <h3>پرسش‌های دوران بارداری</h3>
+            <span class="topic-arrow" aria-hidden="true">↙</span>
+          </article>
+          <article class="topic">
+            <span class="topic-num">۰۳</span>
+            <h3>آمادگی برای زایمان</h3>
+            <span class="topic-arrow" aria-hidden="true">↙</span>
+          </article>
+        </div>
+        <p class="topic-footnote">
+          این موضوع‌ها نمونه‌اند؛ فقط مواردی را نگه دار که مشاور واقعاً ارائه می‌کند.
+        </p>
+      </div>
+    </section>
+
+    <section class="wrap profile" id="midwife">
+      <div class="profile-art" aria-label="تصویرسازی انتزاعی با رنگ‌های پاستیلی">
+        <span class="profile-stamp">معرفی مشاور · ۰۳</span>
+      </div>
+
+      <div class="profile-copy">
+        <div class="section-index"><strong>۰۳</strong> / همراه تو</div>
+        <h2>نازنین<br />مهر</h2>
+        <p>
+          ماما نازنین مهر در فضایی محترمانه و آرام، به پرسش‌های مراجعان گوش
+          می‌دهد و در محدوده‌ی خدمات حرفه‌ای خود همراهی‌شان می‌کند.
+          این متن و نام فعلاً نمونه‌اند.
+        </p>
+        <div class="profile-meta">
+          <span>تحصیلات: اطلاعات نمونه</span>
+          <span>سوابق: برای تکمیل</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="wrap booking" id="booking">
+      <div class="section-index"><strong>۰۴</strong> / رزرو</div>
+
+      <div>
+        <div class="booking-main">
+          <h2>از یک پیام شروع کنیم.</h2>
+
+          <div class="booking-actions">
+            <!-- لینک نمونه؛ با شماره واقعی جایگزین شود، مانند:
+                 https://wa.me/989123456789 -->
+            <a
+              class="messenger"
+              href="https://wa.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>واتساپ</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+
+            <!-- لینک نمونه؛ با آیدی واقعی جایگزین شود، مانند:
+                 https://t.me/username -->
+            <a
+              class="messenger"
+              href="https://t.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <span>تلگرام</span>
+              <span aria-hidden="true">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <p class="booking-note">
+          برای هماهنگی زمان، از پیام‌رسان دلخواهت پیام بفرست. این سایت فرم رزرو ندارد.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>نزدیک — مشاوره مامایی با نازنین مهر</p>
+    <p>این صفحه جایگزین ارزیابی یا مراقبت پزشکی نیست.</p>
+  </footer>
+</body>
+</html>

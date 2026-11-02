@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[نام مشاور] | فضای آرام</title>
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #fff9fb;
+      --accent-1: #ffd6e7;
+      --accent-2: #cfe8ff;
+      --accent-3: #e6d7ff;
+      --text: #4d4d5c;
+      --ink: #343444;
+      --glass: rgba(255, 255, 255, 0.45);
+      --glass-border: rgba(255, 255, 255, 0.55);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: linear-gradient(135deg, #fff9fb 0%, #f7fbff 100%);
+      color: var(--text);
+      font-family: "Vazirmatn", sans-serif;
+      overflow-x: hidden;
+    }
+
+    .top-bar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      backdrop-filter: blur(14px);
+      background: rgba(255,255,255,0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.7);
+      padding: 14px 20px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0,0,0,0.04);
+    }
+
+    .top-bar span {
+      display: inline-block;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 0.95rem;
+    }
+
+    .blob {
+      position: fixed;
+      z-index: -1;
+      filter: blur(65px);
+      opacity: 0.6;
+      border-radius: 50%;
+      animation: float 12s ease-in-out infinite;
+    }
+    .blob-1 { width: 420px; height: 420px; background: var(--accent-1); top: -120px; left: -120px; }
+    .blob-2 { width: 320px; height: 320px; background: var(--accent-2); bottom: -70px; right: -70px; animation-delay: 2s; }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px) translateX(0px); }
+      50% { transform: translateY(20px) translateX(10px); }
+    }
+
+    .main-container {
+      max-width: 850px;
+      margin: 0 auto;
+      padding: 60px 20px 80px;
+    }
+
+    .card, .price-card {
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeUp 0.8s ease forwards;
+    }
+
+    .card:nth-of-type(1) { animation-delay: 0.15s; }
+    .card:nth-of-type(2) { animation-delay: 0.3s; }
+    .card:nth-of-type(3) { animation-delay: 0.45s; }
+
+    .price-card { animation-delay: 0.65s; }
+
+    @keyframes fadeUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .card {
+      background: var(--glass);
+      backdrop-filter: blur(14px);
+      padding: 30px;
+      border-radius: 30px;
+      box-shadow: 0 18px 45px rgba(120, 120, 150, 0.10);
+      margin-bottom: 60px;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--glass-border);
+    }
+
+    .card:hover {
+      transform: translateY(-4px) rotate(-0.6deg);
+      box-shadow: 0 24px 55px rgba(120, 120, 150, 0.14);
+    }
+
+    .card.alt { margin-right: 30px; margin-left: 0; }
+    .card.third { margin-left: 30px; margin-right: 0; }
+
+    .intro {
+      text-align: center;
+      margin-bottom: 90px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 7px 16px;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-bottom: 14px;
+      color: var(--ink);
+      font-weight: 700;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+    }
+
+    .intro h1 {
+      font-size: 3rem;
+      color: var(--ink);
+      margin: 0 0 10px;
+      font-weight: 700;
+    }
+
+    .intro p {
+      font-size: 1.15rem;
+      opacity: 0.8;
+      font-weight: 300;
+      margin: 0;
+    }
+
+    .section-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 0;
+      color: var(--ink);
+    }
+
+    .icon-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      flex-shrink: 0;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.08);
+    }
+
+    .service-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      font-size: 1.05rem;
+    }
+
+    .service-item span {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent-1), var(--accent-2));
+      flex-shrink: 0;
+    }
+
+    .cta-box {
+      text-align: center;
+      margin-top: 60px;
+    }
+
+    .cta-title {
+      font-size: 1.3rem;
+      margin-bottom: 20px;
+      color: var(--ink);
+      font-weight: 700;
+    }
+
+    .messenger-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 15px;
+      margin-bottom: 40px;
+    }
+
+    .msg-btn {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 16px 18px;
+      border-radius: 22px;
+      text-decoration: none;
+      color: white;
+      font-weight: 700;
+      transition: 0.3s ease;
+      box-shadow: 0 14px 28px rgba(0,0,0,0.08);
+      border: 1px solid rgba(255,255,255,0.22);
+      backdrop-filter: blur(8px);
+    }
+
+    .msg-btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255,255,255,0.28), rgba(255,255,255,0));
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+
+    .msg-btn:hover::before {
+      transform: translateX(0);
+    }
+
+    .msg-btn:hover {
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 18px 34px rgba(0,0,0,0.12);
+    }
+
+    .msg-btn:active {
+      transform: translateY(-1px) scale(0.99);
+    }
+
+    .whatsapp { background: linear-gradient(135deg, #ff9fcf, #7dc7ff); }
+    .telegram { background: linear-gradient(135deg, #a7d8ff, #8bb6ff); }
+    .instagram { background: linear-gradient(135deg, #ffb7d5, #c9b3ff); }
+    .phone { background: linear-gradient(135deg, #8fa8ff, #5f7eea); }
+
+    .price-card {
+      background: rgba(255,255,255,0.6);
+      backdrop-filter: blur(14px);
+      border-radius: 30px;
+      padding: 30px;
+      box-shadow: 0 18px 45px rgba(120, 120, 150, 0.10);
+      border: 1px solid rgba(255,255,255,0.6);
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    .price-list {
+      display: grid;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .price-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      border-radius: 18px;
+      padding: 15px 18px;
+      font-size: 1rem;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+
+    .price-item strong {
+      color: var(--ink);
+    }
+
+    @media (max-width: 600px) {
+      .intro h1 { font-size: 2rem; }
+      .card, .card.alt, .card.third {
+        margin-left: 0;
+        margin-right: 0;
+      }
+      .price-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="top-bar">
+    <span>همراهی آرام و آگاهانه در مسیر بارداری</span>
+  </div>
+
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="main-container">
+
+    <div class="intro">
+      <div class="badge">سلام، خوش اومدی</div>
+      <h1>[نام مشاور]</h1>
+      <p>اینجا جاییه برای نفس کشیدن، پرسیدن و آرام شدن.</p>
+    </div>
+
+    <div class="card">
+      <h2 class="section-title"><span class="icon-dot"></span> چرا من؟</h2>
+      <p>من معتقدم مامایی فقط یک تخصص پزشکی نیست، بلکه یک هنرِ همراهیه. دوست دارم در تمام لحظاتی که احساس می‌کنی تنها هستی یا هر چیزی برات مبهمه، دستت رو بگیرم و با هم مسیر رو شفاف کنیم.</p>
+    </div>
+
+    <div class="card alt">
+      <h2 class="section-title"><span class="icon-dot"></span> چطور می‌تونم کمکت کنم؟</h2>
+      <div class="service-item"><span></span> آمادگی برای بارداری (برنامه‌ریزی آگاهانه)</div>
+      <div class="service-item"><span></span> همراهی در دوران بارداری (از هفته اول تا آخر)</div>
+      <div class="service-item"><span></span> آموزش‌های زایمان و مدیریت درد</div>
+      <div class="service-item"><span></span> مراقبت‌های پس از زایمان و دوران شیردهی</div>
+    </div>
+
+    <div class="card third">
+      <h2 class="section-title"><span class="icon-dot"></span> یک یادداشت کوچک...</h2>
+      <p>«تو قوی‌تر از اون چیزی هستی که فکر می‌کنی، اما لازم نیست همیشه قوی باشی. اشکال نداره بترسی یا نترسی، یا هر حسی داشته باشی.»</p>
+    </div>
+<div class="card">
+  <h2 style="margin-top:0">نمونه خدمات ویژه</h2>
+  <div class="service-item"><span></span> مشاوره قبل از بارداری</div>
+  <div class="service-item"><span></span> مراقبت بارداری پرخطر</div>
+  <div class="service-item"><span></span> آموزش شیردهی و مراقبت نوزاد</div>
+  <div class="service-item"><span></span> آمادگی برای زایمان طبیعی</div>
+  <div class="service-item"><span></span> پیگیری و مراقبت پس از زایمان</div>
+</div>
+
+<div class="card alt">
+  <h2 style="margin-top:0">تجربه و مدرک‌ها</h2>
+  <div class="service-item"><span></span> دارای مدرک مامایی از دانشگاه [نام دانشگاه]</div>
+  <div class="service-item"><span></span> [X] سال تجربه در مشاوره و همراهی بارداری</div>
+  <div class="service-item"><span></span> شرکت در دوره‌های تخصصی زایمان و شیردهی</div>
+  <div class="service-item"><span></span> همراهی با مادران در مراحل مختلف بارداری و پس از زایمان</div>
+</div>
+
+<div class="card third">
+  <h2 style="margin-top:0">از کجا شروع کنم؟</h2>
+  <div class="service-item"><span></span> ابتدا یکی از پیام‌رسان‌ها را انتخاب کن و پیام بده</div>
+  <div class="service-item"><span></span> مشکل یا سوالت را کوتاه توضیح بده</div>
+  <div class="service-item"><span></span> اگر لازم بود، زمان مشاوره برایت هماهنگ می‌شود</div>
+  <div class="service-item"><span></span> بعد از آن، مسیر مناسب برایت مشخص می‌شود</div>
+</div>
+
+    <div class="cta-box">
+      <div class="cta-title">از طریق یکی از پیام‌رسان‌ها با من در ارتباط باش</div>
+      <div class="messenger-grid">
+        <a href="https://wa.me/989120000000" class="msg-btn whatsapp">واتساپ</a>
+        <a href="https://t.me/username" class="msg-btn telegram">تلگرام</a>
+        <a href="https://instagram.com/username" class="msg-btn instagram">اینستاگرام</a>
+        <a href="tel:+989120000000" class="msg-btn phone">تماس تلفنی</a>
+      </div>
+
+      <div class="price-card">
+        <h2 class="section-title"><span class="icon-dot"></span> هزینه مشاوره</h2>
+        <div class="price-list">
+          <div class="price-item"><span>مشاوره اولیه</span><strong>۴۵۰,۰۰۰ تومان</strong></div>
+          <div class="price-item"><span>مشاوره بارداری</span><strong>۶۵۰,۰۰۰ تومان</strong></div>
+          <div class="price-item"><span>مشاوره زایمان</span><strong>۷۵۰,۰۰۰ تومان</strong></div>
+          <div class="price-item"><span>مشاوره پس از زایمان</span><strong>۵۵۰,۰۰۰ تومان</strong></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+</html>

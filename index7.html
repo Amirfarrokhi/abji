@@ -1,1 +1,1073 @@
-s
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="معرفی خدمات مشاوره مامایی و راه‌های ارتباط با [نام مشاور]"
+  >
+
+  <title>[نام مشاور] | دفترچهٔ مامایی</title>
+
+  <style>
+    :root {
+  --ink: #57454f;
+  --muted: #887681;
+  --pink: #cf7897;
+  --pink-dark: #a85274;
+  --cream: #fffaf2;
+  --paper: #fffdf9;
+  --mint: #eaf3e8;
+  --lilac: #f0eafb;
+  --peach: #fff0e3;
+  --line: #eadde1;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 90px;
+}
+
+body {
+  margin: 0;
+  color: var(--ink);
+  background-color: var(--cream);
+  background-image: radial-gradient(#e9d8dd 0.7px, transparent 0.7px);
+  background-size: 18px 18px;
+  font-family: Tahoma, Arial, sans-serif;
+  line-height: 1.9;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.container {
+  width: min(1080px, 91%);
+  margin-inline: auto;
+}
+
+/* منوی بالای صفحه */
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(255, 250, 242, 0.94);
+  border-bottom: 2px dashed #e9d6dd;
+  backdrop-filter: blur(12px);
+}
+
+.nav {
+  min-height: 76px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--pink-dark);
+  font-size: 1.05rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.brand::before {
+  content: "✿";
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px 12px 12px 4px;
+  background: #ffe7ef;
+  color: var(--pink-dark);
+  transform: rotate(-8deg);
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.nav-links a {
+  padding: 7px 11px;
+  border-radius: 999px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.nav-links a:hover {
+  color: var(--pink-dark);
+  background: #ffeaf0;
+}
+
+/* دکمه‌ها */
+.button,
+.button-outline {
+  display: inline-block;
+  padding: 10px 19px;
+  border-radius: 999px;
+  font-weight: 700;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.button {
+  color: #fff;
+  background: linear-gradient(135deg, #d98aa6, #bd6688);
+  box-shadow: 0 7px 16px rgba(201, 118, 152, 0.22);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(201, 118, 152, 0.3);
+}
+
+.button-outline {
+  color: var(--pink-dark);
+  border: 1px solid #e9bfd0;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.button-outline:hover {
+  transform: translateY(-2px);
+  background: #fff0f5;
+}
+
+/* بخش معرفی */
+.hero {
+  position: relative;
+  overflow: hidden;
+  padding: 78px 0;
+  background: linear-gradient(
+    130deg,
+    #fff1e4 0%,
+    #ffeaf1 54%,
+    #eee8fb 100%
+  );
+}
+
+.hero::before,
+.hero::after {
+  position: absolute;
+  color: rgba(201, 118, 152, 0.17);
+  pointer-events: none;
+}
+
+.hero::before {
+  content: "✿";
+  top: 18px;
+  left: 7%;
+  font-size: 70px;
+  transform: rotate(-15deg);
+}
+
+.hero::after {
+  content: "✿";
+  right: 48%;
+  bottom: 8px;
+  color: rgba(164, 137, 202, 0.2);
+  font-size: 42px;
+}
+
+.hero-grid {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  align-items: center;
+  gap: 56px;
+}
+
+.eyebrow {
+  display: inline-block;
+  padding: 4px 13px;
+  border: 1px dashed #d9a7b8;
+  border-radius: 999px;
+  background: #fff9fb;
+  color: var(--pink-dark);
+  font-size: 0.84rem;
+  font-weight: 700;
+  transform: rotate(-1deg);
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.65;
+}
+
+h1 {
+  max-width: 580px;
+  margin: 16px 0 10px;
+  color: #55414d;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  letter-spacing: -1px;
+}
+
+.hero p,
+.section-intro {
+  max-width: 620px;
+  color: var(--muted);
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.photo-placeholder {
+  position: relative;
+  min-height: 350px;
+  display: grid;
+  place-items: center;
+  padding: 28px;
+  overflow: visible;
+  border: 10px solid rgba(255, 253, 249, 0.9);
+  border-radius: 46% 46% 40% 40%;
+  background:
+    radial-gradient(circle at 70% 28%, #fff8d8 0 9%, transparent 9.5%),
+    linear-gradient(145deg, #f5d8e3, #e9e2f7);
+  box-shadow: 8px 12px 0 #d9bfd0, 0 18px 35px rgba(113, 87, 106, 0.1);
+  color: #815b72;
+  text-align: center;
+  transform: rotate(2deg);
+}
+
+.photo-placeholder::after {
+  content: "با مهر و مراقبت ♡";
+  position: absolute;
+  right: -16px;
+  bottom: 22px;
+  padding: 7px 14px;
+  border: 1px dashed #d38ba4;
+  border-radius: 8px;
+  background: #fff9df;
+  color: #8c6172;
+  font-size: 0.82rem;
+  transform: rotate(-5deg);
+}
+
+/* فاصله و عنوان بخش‌ها */
+section {
+  padding: 72px 0;
+}
+
+.section-heading {
+  margin: 12px 0 8px;
+  color: #594451;
+  font-size: clamp(1.55rem, 3vw, 2.15rem);
+}
+
+.section-intro {
+  margin-top: 8px;
+}
+
+/* دربارهٔ مشاور */
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.8fr 1.2fr;
+  align-items: start;
+  gap: 40px;
+}
+
+.note {
+  margin-top: 20px;
+  padding: 22px 24px;
+  border: 2px dashed #e2c7b0;
+  border-radius: 22px;
+  background: #fff7e9;
+  box-shadow: 5px 6px 0 #f3e8d8;
+  color: #806f70;
+}
+
+/* خدمات */
+.services-section {
+  background: linear-gradient(135deg, #fffaf6, #fff5f8 60%, #f8f4ff);
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.service-card {
+  padding: 22px;
+  border: 2px dashed #eadde1;
+  border-radius: 18px 18px 18px 5px;
+  box-shadow: 4px 5px 0 #f2e6e9;
+}
+
+.service-card:nth-child(1) {
+  background: #fff0f4;
+}
+
+.service-card:nth-child(2) {
+  background: #f2edff;
+}
+
+.service-card:nth-child(3) {
+  background: #fff5e8;
+}
+
+.service-card h3 {
+  margin: 0 0 6px;
+  color: #654b5a;
+  font-size: 1.02rem;
+}
+
+.service-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+/* تعرفه‌ها */
+.pricing-section {
+  background: linear-gradient(135deg, #fff7ed, #fff1f6 55%, #f4f0ff);
+}
+
+.pricing-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+
+.price-card {
+  min-height: 120px;
+  padding: 13px 16px;
+  border: 2px dashed #e7cbd5;
+  border-radius: 16px 16px 16px 5px;
+  background: #fffdfb;
+  box-shadow: 3px 4px 0 #f1e3e8;
+}
+
+.price-card:nth-child(3n + 2) {
+  border-color: #ded1ef;
+  background: #f8f4ff;
+}
+
+.price-card:nth-child(3n + 3) {
+  border-color: #efd9bc;
+  background: #fff8ed;
+}
+
+.price-number {
+  color: var(--pink-dark);
+  font-size: 0.72rem;
+  font-weight: 700;
+}
+
+.price-card h3 {
+  margin: 2px 0 4px;
+  color: var(--ink);
+  font-size: 0.92rem;
+  line-height: 1.6;
+}
+
+.price-card strong {
+  color: var(--pink-dark);
+  font-size: 0.88rem;
+}
+
+/* مقاله‌ها */
+.articles-section {
+  background: #fffaf4;
+}
+
+.articles-heading {
+  margin-bottom: 24px;
+}
+
+.article-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.article-card {
+  position: relative;
+  min-height: 166px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 15px;
+  overflow: hidden;
+  border: 2px dashed #e7cbd5;
+  border-radius: 18px 18px 18px 5px;
+  background: #fff;
+  box-shadow: 3px 4px 0 #f1e3e8;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.article-card:nth-child(4n + 2) {
+  border-color: #ded1ef;
+  background: #f7f2ff;
+}
+
+.article-card:nth-child(4n + 3) {
+  border-color: #efd9bc;
+  background: #fff6e9;
+}
+
+.article-card:nth-child(4n + 4) {
+  border-color: #d2e4d0;
+  background: #eff7ed;
+}
+
+.article-card:hover {
+  transform: translateY(-4px) rotate(-1deg);
+  box-shadow: 5px 8px 0 #ead8e0;
+}
+
+.article-number {
+  color: #bd8298;
+  font-size: 0.76rem;
+  font-weight: 700;
+}
+
+.article-label {
+  margin: 5px 0 3px;
+  padding: 2px 9px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.75);
+  color: #8b6475;
+  font-size: 0.7rem;
+}
+
+.article-card h3 {
+  margin: 5px 0 22px;
+  color: var(--ink);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.article-arrow {
+  position: absolute;
+  left: 13px;
+  bottom: 7px;
+  color: var(--pink-dark);
+  font-size: 1.1rem;
+}
+
+/* راه‌های ارتباطی */
+.contact-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 32px;
+  border: 2px dashed #dfbfce;
+  border-radius: 28px;
+  background: linear-gradient(135deg, #fff0f4, #f4efff);
+  box-shadow: 6px 7px 0 #efe2e9;
+}
+
+.contact-box p {
+  color: var(--muted);
+}
+
+.contact-info {
+  width: 100%;
+}
+
+.phone-number {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 2px;
+  margin-top: 10px;
+  padding: 10px 16px;
+  border: 1px dashed #dfbfce;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.75);
+}
+
+.phone-number span {
+  color: var(--muted);
+  font-size: 0.82rem;
+}
+
+.phone-number strong {
+  color: var(--pink-dark);
+  font-size: 1.15rem;
+  letter-spacing: 1px;
+}
+
+.social-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 9px;
+  margin-top: 18px;
+}
+
+.social-link {
+  padding: 7px 14px;
+  border: 1px solid #eadde1;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.88rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(113, 75, 96, 0.1);
+}
+
+.social-link.telegram {
+  background: #edf6ff;
+}
+
+.social-link.eitaa {
+  background: #fff1e8;
+}
+
+.social-link.bale {
+  background: #fff8df;
+}
+
+.social-link.whatsapp {
+  background: #edf8ee;
+}
+
+.social-link.instagram {
+  background: #fff0f5;
+}
+
+.contact-address {
+  margin-top: 16px;
+  color: var(--muted);
+}
+
+/* پابرگ */
+footer {
+  padding: 24px 0;
+  border-top: 2px dashed #eadde1;
+  background: #fffaf4;
+  color: var(--muted);
+  font-size: 0.86rem;
+}
+
+footer p {
+  margin-top: 0;
+}
+
+/* نمایش در صفحه‌های متوسط */
+@media (max-width: 900px) {
+  .article-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .hero-grid {
+    gap: 36px;
+  }
+}
+
+/* نمایش در تبلت و موبایل */
+@media (max-width: 760px) {
+  .nav {
+    min-height: 68px;
+    padding: 10px 0;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .hero {
+    padding: 54px 0;
+  }
+
+  .hero-grid,
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .photo-placeholder {
+    min-height: 240px;
+  }
+
+  .cards {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .pricing-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .contact-box {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 25px;
+  }
+
+  section {
+    padding: 58px 0;
+  }
+}
+
+/* موبایل کوچک */
+@media (max-width: 520px) {
+  .article-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .article-card {
+    min-height: 170px;
+    padding: 12px;
+  }
+
+  .article-card h3 {
+    font-size: 0.82rem;
+  }
+
+  .hero-actions {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .hero-actions a {
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .pricing-grid {
+    gap: 9px;
+  }
+
+  .price-card {
+    min-height: 112px;
+    padding: 11px;
+  }
+
+  .price-card h3 {
+    font-size: 0.84rem;
+  }
+
+  .price-card strong {
+    font-size: 0.82rem;
+  }
+
+  .social-links {
+    gap: 7px;
+  }
+
+  .social-link {
+    padding: 6px 11px;
+    font-size: 0.82rem;
+  }
+}
+.social-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border: 1px solid #eadde1;
+  border-radius: 999px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.88rem;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.social-link:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 12px rgba(113, 75, 96, 0.1);
+}
+
+.social-icon {
+  width: 19px;
+  height: 19px;
+  flex: 0 0 19px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.telegram .social-icon {
+  fill: currentColor;
+  stroke: none;
+}
+
+.telegram {
+  color: #238acb;
+  background: #edf6ff;
+}
+
+.eitaa {
+  color: #d76b35;
+  background: #fff1e8;
+}
+
+.bale {
+  color: #c59a16;
+  background: #fff8df;
+}
+
+.whatsapp {
+  color: #32965b;
+  background: #edf8ee;
+}
+
+.instagram {
+  color: #c04e7a;
+  background: #fff0f5;
+}
+
+.instagram .icon-dot {
+  fill: currentColor;
+  stroke: none;
+}
+
+@media (max-width: 480px) {
+  .social-link {
+    gap: 6px;
+    padding: 7px 11px;
+    font-size: 0.82rem;
+  }
+
+  .social-icon {
+    width: 17px;
+    height: 17px;
+    flex-basis: 17px;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="container nav">
+      <a class="brand" href="#خانه">[نام مشاور]</a>
+
+      <nav class="nav-links" aria-label="منوی اصلی">
+        <a href="#درباره">دربارهٔ من</a>
+        <a href="#خدمات">خدمات</a>
+        <a href="#مقالات">مقاله‌ها</a>
+        <a href="#تماس">تماس</a>
+      </nav>
+
+      <a class="button" href="#تماس">درخواست مشاوره</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="خانه">
+      <div class="container hero-grid">
+        <div>
+          <span class="eyebrow">دفترچهٔ مامایی من</span>
+          <h1>همراهی آرام و آگاهانه در مسیر مراقبت</h1>
+
+          <p>
+            اینجا فضایی است برای آشنایی با خدمات مشاوره مامایی، خواندن مطالب
+            آموزشی و پیدا کردن راهی برای ارتباط با [نام مشاور].
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="#تماس">ارتباط با مشاور</a>
+            <a class="button-outline" href="#خدمات">دیدن خدمات</a>
+          </div>
+        </div>
+
+        <div
+          class="photo-placeholder"
+          role="img"
+          aria-label="جای تصویر مشاور"
+        >
+          تصویر مشاور یا تصویر فضای کاری
+        </div>
+      </div>
+    </section>
+
+    <section id="درباره">
+      <div class="container about-grid">
+        <div>
+          <span class="eyebrow">چند خط دربارهٔ من</span>
+          <h2 class="section-heading">سلام، من [نام و نام خانوادگی] هستم</h2>
+        </div>
+
+        <div>
+          <p class="section-intro">
+            من [مدرک یا عنوان حرفه‌ای] دارم و در زمینهٔ [حوزه‌های فعالیت]
+            کار می‌کنم. در جلسات مشاوره تلاش می‌کنم با توجه به پرسش‌ها و
+            نیازهای شما، فضایی روشن و محترمانه برای گفت‌وگو فراهم کنم.
+          </p>
+
+          <div class="note">
+            این بخش را با سوابق، مجوزهای حرفه‌ای و حوزهٔ فعالیت واقعی مشاور
+            تکمیل کن. فقط اطلاعات قابل‌تأیید را بنویس.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="services-section" id="خدمات">
+      <div class="container">
+        <span class="eyebrow">برگهٔ خدمات</span>
+        <h2 class="section-heading">در چه زمینه‌هایی می‌توانم همراهتان باشم؟</h2>
+
+        <p class="section-intro">
+          عنوان‌ها و توضیحات زیر نمونه‌اند؛ آن‌ها را با خدمات واقعی مشاور
+          جایگزین کن.
+        </p>
+
+        <div class="cards">
+          <article class="service-card">
+            <h3>مشاورهٔ دوران بارداری</h3>
+            <p>
+              گفت‌وگو دربارهٔ پرسش‌ها و نیازهای مراقبتی دوران بارداری.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3>آمادگی برای زایمان</h3>
+            <p>
+              آشنایی با گزینه‌ها و آماده‌کردن پرسش‌ها برای گفت‌وگو با تیم درمان.
+            </p>
+          </article>
+
+          <article class="service-card">
+            <h3>مراقبت پس از زایمان</h3>
+            <p>
+              مشاوره دربارهٔ نیازهای مراقبتی و مسیر دریافت کمک پس از زایمان.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="articles-section" id="مقالات">
+      <div class="container">
+        <div class="articles-heading">
+          <span class="eyebrow">از دفترچهٔ من</span>
+          <h2 class="section-heading">چند یادداشت برای شما</h2>
+          <p class="section-intro">
+            برای خواندن هر مطلب روی عنوانش بزنید.
+          </p>
+        </div>
+
+        <div class="article-grid">
+          <a class="article-card" href="article-1.html">
+            <span class="article-number">۰۱</span>
+            <span class="article-label">آمادگی</span>
+            <h3>برای جلسهٔ مشاوره چه پرسش‌هایی آماده کنیم؟</h3>
+            <span class="article-arrow" aria-hidden="true">←</span>
+          </a>
+
+          <a class="article-card" href="article-2.html">
+            <span class="article-number">۰۲</span>
+            <span class="article-label">آگاهی</span>
+            <h3>چطور اطلاعات سلامت را ارزیابی کنیم؟</h3>
+            <span class="article-arrow" aria-hidden="true">←</span>
+          </a>
+
+          <a class="article-card" href="article-3.html">
+            <span class="article-number">۰۳</span>
+            <span class="article-label">بارداری</span>
+            <h3>پرسش‌هایی که می‌توانید در ویزیت بپرسید</h3>
+            <span class="article-arrow" aria-hidden="true">←</span>
+          </a>
+
+          <a class="article-card" href="article-4.html">
+            <span class="article-number">۰۴</span>
+            <span class="article-label">زایمان</span>
+            <h3>آمادگی برای گفت‌وگو دربارهٔ زایمان</h3>
+            <span class="article-arrow" aria-hidden="true">←</span>
+          </a>
+
+          <a class="article-card" href="article-5.html">
+            <span class="article-number">۰۵</span>
+            <span class="article-label">مراقبت</span>
+            <h3>چطور یادداشت‌های مراقبتی‌مان را مرتب کنیم؟</h3>
+            <span class="article-arrow" aria-hidden="true">←</span>
+          </a>
+
+          <a class="article-card" href="article-6.html">
+            <span class="article-number">۰۶</span>
+            <span class="article-label">پس از زایمان</span>
+            <h3>برای مراجعهٔ پس از زایمان چه چیزهایی بنویسیم؟</h3>
+            <span class="article-arrow" aria-hidden="true">←</span>
+          </a>
+
+          <a class="article-card" href="article-7.html">
+            <span class="article-number">۰۷</span>
+            <span class="article-label">گفت‌وگو</span>
+            <h3>چطور پرسش‌های سلامت را با تیم درمان مطرح کنیم؟</h3>
+            <span class="article-arrow" aria-hidden="true">←</span>
+          </a>
+
+          <a class="article-card" href="article-8.html">
+            <span class="article-number">۰۸</span>
+            <span class="article-label">راهنما</span>
+            <h3>یک چک‌لیست ساده برای پیش از جلسهٔ مشاوره</h3>
+            <span class="article-arrow" aria-hidden="true">←</span>
+          </a>
+        </div>
+      </div>
+    </section>
+<section class="pricing-section" id="هزینه‌ها">
+  <div class="container">
+    <span class="eyebrow">تعرفه‌ها</span>
+    <h2 class="section-heading">هزینهٔ خدمات مشاوره</h2>
+
+    <div class="pricing-grid">
+      <article class="price-card">
+        <span class="price-number">۰۱</span>
+        <h3>مشاورهٔ اولیه</h3>
+        <strong>[مبلغ] تومان</strong>
+      </article>
+
+      <article class="price-card">
+        <span class="price-number">۰۲</span>
+        <h3>مشاورهٔ دوران بارداری</h3>
+        <strong>[مبلغ] تومان</strong>
+      </article>
+
+      <article class="price-card">
+        <span class="price-number">۰۳</span>
+        <h3>آمادگی برای زایمان</h3>
+        <strong>[مبلغ] تومان</strong>
+      </article>
+
+      <article class="price-card">
+        <span class="price-number">۰۴</span>
+        <h3>مشاورهٔ پس از زایمان</h3>
+        <strong>[مبلغ] تومان</strong>
+      </article>
+
+      <article class="price-card">
+        <span class="price-number">۰۵</span>
+        <h3>جلسهٔ پیگیری</h3>
+        <strong>[مبلغ] تومان</strong>
+      </article>
+
+      <article class="price-card">
+        <span class="price-number">۰۶</span>
+        <h3>مشاورهٔ آنلاین</h3>
+        <strong>[مبلغ] تومان</strong>
+      </article>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="contact-section" id="تماس">
+  <div class="container">
+    <div class="contact-box">
+      <div class="contact-info">
+        <span class="eyebrow">راه‌های ارتباطی</span>
+        <h2 class="section-heading">از راه دلخواهتان پیام بدهید</h2>
+
+        <p>زمان پاسخ‌گویی: [روزها و ساعت‌های پاسخ‌گویی]</p>
+
+        <a class="phone-number" href="tel:+989121234567">
+          <span>شماره تماس</span>
+          <strong dir="ltr">۰۹۱۲ ۱۲۳ ۴۵۶۷</strong>
+        </a>
+
+<div class="social-links" aria-label="پیام‌رسان‌ها و شبکه‌های اجتماعی">
+  <a class="social-link telegram"
+     href="https://t.me/username"
+     target="_blank"
+     rel="noopener noreferrer">
+    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M21.5 3.5 18.3 20c-.2 1.2-.9 1.5-1.8 1l-5-3.7-2.4 2.3c-.3.3-.5.5-1 .5l.4-5.1 9.3-8.4c.4-.4-.1-.6-.6-.2L5.7 13.7.8 12.2c-1.1-.3-1.1-1.1.2-1.6L20 3.1c.9-.3 1.7.2 1.5.4Z"/>
+    </svg>
+    <span>تلگرام</span>
+  </a>
+
+  <a class="social-link eitaa"
+     href="https://eitaa.com/username"
+     target="_blank"
+     rel="noopener noreferrer">
+    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 11.5a8 8 0 0 1-8 8H7l-4 2 1.3-4A8 8 0 1 1 20 11.5Z"/>
+      <circle cx="9" cy="11.5" r="1"/>
+      <circle cx="12" cy="11.5" r="1"/>
+      <circle cx="15" cy="11.5" r="1"/>
+    </svg>
+    <span>ایتا</span>
+  </a>
+
+  <a class="social-link bale"
+     href="https://ble.ir/username"
+     target="_blank"
+     rel="noopener noreferrer">
+    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20 11.5a8 8 0 0 1-8 8H7l-4 2 1.3-4A8 8 0 1 1 20 11.5Z"/>
+      <path d="M9 12h6"/>
+      <path d="M12 9v6"/>
+    </svg>
+    <span>بله</span>
+  </a>
+
+  <a class="social-link whatsapp"
+     href="https://wa.me/989121234567"
+     target="_blank"
+     rel="noopener noreferrer">
+    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <path d="M20.5 11.7a8.5 8.5 0 0 1-12.6 7.4L3 20.5l1.4-4.7a8.5 8.5 0 1 1 16.1-4.1Z"/>
+      <path d="M8.5 8.2c.2-.5.4-.5.7-.5h.5c.2 0 .4 0 .5.4l.7 1.7c.1.3.1.5-.1.7l-.5.6c-.2.2-.2.4-.1.6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.8c.3.1.4.3.4.5 0 .3-.2 1-.7 1.4-.4.4-1 .6-1.7.5-1-.1-2.3-.7-3.7-1.9-1.2-1.1-2-2.4-2.2-3.3-.2-1 .1-1.9.5-2.5Z"/>
+    </svg>
+    <span>واتساپ</span>
+  </a>
+
+  <a class="social-link instagram"
+     href="https://instagram.com/username"
+     target="_blank"
+     rel="noopener noreferrer">
+    <svg class="social-icon" viewBox="0 0 24 24" aria-hidden="true">
+      <rect x="3" y="3" width="18" height="18" rx="5"/>
+      <circle cx="12" cy="12" r="4"/>
+      <circle class="icon-dot" cx="17.5" cy="6.8" r="1"/>
+    </svg>
+    <span>اینستاگرام</span>
+  </a>
+</div>
+
+
+        <p class="contact-address">نشانی: [شهر یا نشانی محل فعالیت]</p>
+      </div>
+    </div>
+  </div>
+</section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>
+        مطالب این وب‌سایت جنبهٔ آموزشی دارند و جایگزین ارزیابی یا مشاورهٔ
+        تخصصی نیستند.
+      </p>
+      <span>© [سال] [نام مشاور]</span>
+    </div>
+  </footer>
+</body>
+</html>
